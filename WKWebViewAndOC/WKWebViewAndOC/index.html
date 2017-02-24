@@ -1,0 +1,53 @@
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>html页面</title>
+ 		<style>
+            *{
+                font-size: 50px;
+            }
+        
+            .btn{height:80px; width:80%; padding: 0px 30px; background-color: #0071E7; border: solid 1px #0071E7; border-radius:5px; font-size: 1em; color: white}
+            
+            body{
+                width:100%;
+                height:200px;
+                background:green;
+            }
+ 		</style>
+        
+        <script>
+            //OC调用JS的方法
+        	function showLog() {
+              alert("OC调用了JS");
+              if(confirm('Star it?'))
+               {
+                   alert('Done');
+               }else{
+                    alert('Done');
+               }
+              document.getElementById('div').style.backgroundColor = "red";
+
+        	}
+        
+            //JS响应方法列表
+            function btnClick1() {
+                window.webkit.messageHandlers.showJSToOC1.postMessage('我是参数');
+            }
+            function btnClick2() {
+                window.webkit.messageHandlers.showJSToOC2.postMessage(['我是参数1','我是参数2']);
+           }
+        </script>
+    </head>
+
+    <!--网页具体内容-->
+    <body>
+		<div id="div">
+            <br/>
+			<button class="btn" type="button" onclick="btnClick1()">JS调用OC方法(单个参数)</button>
+            <br/>
+            <br/>
+            <button class="btn" type="button" onclick="btnClick2()">JS调用OC方法(多个参数)</button>
+		</div>
+    </body>
+</html>
